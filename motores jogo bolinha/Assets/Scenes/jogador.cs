@@ -1,16 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class jogador : MonoBehaviour
 {
     public int velocidade = 10;
+    public int forcaPulo = 7;
+    public bool noChao;
     private Rigidbody rb;
     // Start is called before the first frame update
     private void Start()
     {
         TryGetComponent(out rb);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        noChao = true;
     }
 
     // Update is called once per frame
@@ -24,6 +33,15 @@ public class jogador : MonoBehaviour
         if (transform.position.y <= -10)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
+            
+        }
+        
+        if (noChao && Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector3.up * forcaPulo,ForceMode.Impulse);
+            noChao = false;
+
         }
     }
 }
