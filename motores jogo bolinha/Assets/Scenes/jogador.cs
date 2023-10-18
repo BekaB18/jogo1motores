@@ -11,7 +11,7 @@ public class jogador : MonoBehaviour
     public int forcaPulo = 7;
     public bool noChao;
     private Rigidbody rb;
-    // Start is called before the first frame update
+
     private void Start()
     {
         TryGetComponent(out rb);
