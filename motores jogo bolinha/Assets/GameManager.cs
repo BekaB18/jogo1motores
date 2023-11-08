@@ -18,9 +18,15 @@ public class GameManager : MonoBehaviour
         hud.text = $"Moedas restantes: {restantes} ";
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SubtrairMoedas(int valor)
     {
+        restantes -= valor;
+        hud.text = $"Moedas restantes: {restantes} ";
+
+        if (restantes <= 0)
+        {
+            msgViotria.text = "parabens!";
+        }
         
     }
 }
