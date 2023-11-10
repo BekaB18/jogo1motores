@@ -11,11 +11,17 @@ public class jogador : MonoBehaviour
     public int forcaPulo = 7;
     public bool noChao;
     private Rigidbody rb;
+    private AudioSource soucer;
 
-    private void Start()
+
+    void Start()
     {
+        Debug.Log("START");
         TryGetComponent(out rb);
+        TryGetComponent(out soucer);
     }
+
+    
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -39,6 +45,9 @@ public class jogador : MonoBehaviour
         
         if (noChao && Input.GetKeyDown(KeyCode.Space))
         {
+
+            soucer.Play();  
+
             rb.AddForce(Vector3.up * forcaPulo,ForceMode.Impulse);
             noChao = false;
 
