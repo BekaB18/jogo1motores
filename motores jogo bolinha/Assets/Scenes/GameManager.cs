@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
         if (restantes <= 0)
         {
-            msgViotria.text = "Parabens, voçê ganhou o jogo!";
+            msgViotria.text = "Parabéns, você ganhou o jogo!";
             source.PlayOneShot(clipVitoria);
         }
         
